@@ -1,6 +1,7 @@
 package com.example.cruddatabase
 
 
+import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -16,9 +17,10 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var list: RecyclerView;
-    lateinit var add: FloatingActionButton;
+    private lateinit var list: RecyclerView;
+    private lateinit var add: FloatingActionButton;
 
+    private lateinit var progressDialog: ProgressDialog
     private lateinit var myAdapter: AdapterList
     private lateinit var itemList: MutableList<FruitModel>
     private lateinit var db: FirebaseFirestore
@@ -32,11 +34,15 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
         FirebaseApp.initializeApp(this)
         db = FirebaseFirestore.getInstance()
 
         list = findViewById(R.id.recycleView)
         add = findViewById(R.id.screenAdd)
+        progressDialog = ProgressDialog(this).apply {
+            setTitle("Loading. . .")
+        }
 
         add.setOnClickListener {
             startActivity(Intent(this, AddData::class.java))
@@ -50,15 +56,20 @@ class MainActivity : AppCompatActivity() {
 
         myAdapter.setOnItemClickListener(object : AdapterList.OnItemClickListener {
             override fun onItemClick(item: FruitModel) {
-//                val intent = Intent(this@MainActivity, NewsDetail::class.java).apply {
-//                    putExtra("id", item.id)
-//                    putExtra("name", item.name)
-//                    putExtra("color", item.color)
-//                    putExtra("imageUrl", item.imageUrl)
-//                }
-//                startActivity(intent)
+                Log.w("fruit image", item.img)
+                val intent = Intent(this@MainActivity, DetailData::class.java).apply {
+                    putExtra("id", item.id)
+                    putExtra("name", item.name)
+                    putExtra("color", item.color)
+                    putExtra("imageUrl", item.img)
+                }
+                startActivity(intent)
             }
         })
+    }
+
+    fun main(args: Array<String>){
+        getData()
     }
 
     override fun onStart() {
@@ -77,7 +88,7 @@ class MainActivity : AppCompatActivity() {
                             document.id,
                             document.getString("name") ?: "",
                             document.getString("color") ?: "",
-//                            document.getString("imageUrl") ?: ""
+                            document.getString("imageUrl") ?: ""
                         )
                         itemList.add(item)
                         Log.d("data", "${document.id} => ${document.data}")

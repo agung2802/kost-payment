@@ -4,13 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".AdapterList">
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/image"
+            android:src="@mipmap/ic_launcher"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:contentDescription="Student Image"
+            tools:ignore="HardcodedText" />
 
         <LinearLayout
             android:layout_width="wrap_content"

@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:id="@+id/name"
+        android:id="@+id/txtName"
         />
     <TextView
         android:layout_width="match_parent"
@@ -36,8 +36,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:id="@+id/color"
+        android:id="@+id/txtColor"
         />
+        <ImageView
+            android:id="@+id/previewImage"
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="#E0E0E0"
+            android:contentDescription="Image Selected"
+            tools:ignore="HardcodedText" />
+        <Button
+            android:id="@+id/selectImage"
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Pilih Gambar"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
