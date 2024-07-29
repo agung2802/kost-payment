@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Crud Database</string>
+    <string name="app_name">Room Type List</string>
+    <string name="default_web_client_id">558515681737-jsnc2m9qeb6ofvcvhofaet0vqaacgpvs.apps.googleusercontent.com</string>
 </resources>

@@ -7,10 +7,11 @@
     android:layout_height="wrap_content"
     tools:context=".AdapterList">
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints"
+        >
 
         <ImageView
             android:id="@+id/image"
@@ -19,7 +20,8 @@
             android:layout_height="80dp"
             android:scaleType="centerCrop"
             android:adjustViewBounds="true"
-            android:contentDescription="Student Image"
+            android:background="@drawable/rounded"
+            android:contentDescription="Kost Image"
             tools:ignore="HardcodedText" />
 
         <LinearLayout
@@ -30,7 +32,7 @@
             tools:ignore="MissingConstraints">
 
             <TextView
-                android:id="@+id/fruitName"
+                android:id="@+id/listName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Name"
@@ -39,10 +41,18 @@
                 tools:ignore="HardcodedText" />
 
             <TextView
-                android:id="@+id/fruitColor"
+                android:id="@+id/listFacility"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:text="Major"
+                android:textSize="14sp"
+                tools:ignore="HardcodedText" />
+            <TextView
+                android:id="@+id/listPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Major"
+                android:textStyle="bold"
                 android:textSize="14sp"
                 tools:ignore="HardcodedText" />
         </LinearLayout>

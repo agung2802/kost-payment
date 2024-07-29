@@ -5,60 +5,155 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/darkblue"
     tools:context=".AddData">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        tools:ignore="MissingConstraints"
-        android:layout_marginHorizontal="20dp"
-        >
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Fruit Name"
-        android:textSize="30dp"
-        android:layout_marginTop="30dp"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:id="@+id/txtName"
-        />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Fruit Color"
-        android:textSize="30dp"
-        android:layout_marginTop="30dp"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:id="@+id/txtColor"
-        />
-        <ImageView
-            android:id="@+id/previewImage"
-            android:layout_margin="8dp"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:background="#E0E0E0"
-            android:contentDescription="Image Selected"
-            tools:ignore="HardcodedText" />
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints">
+
         <Button
-            android:id="@+id/selectImage"
-            android:layout_margin="8dp"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="Pilih Gambar"/>
-        <Button
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add"
+            android:backgroundTint="@color/transparent"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:icon="@drawable/back"
+            app:iconSize="50dp"
+            tools:ignore="MissingConstraints"
+            android:id="@+id/backButton"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Room type detail"
+            android:textStyle="bold"
+            android:textColor="@color/white"
             android:textSize="30dp"
-            android:layout_marginTop="30dp"
-            android:id="@+id/addButton"
+            android:layout_gravity="center"
+            android:id="@+id/headTitle"
             />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="760dp"
+        android:background="@drawable/layout_bd"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints"
+        android:paddingHorizontal="40dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:ignore="MissingConstraints"
+            android:paddingTop="40dp"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Room Type Name:"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:textColor="@color/darkblue"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtName"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Facility"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:textColor="@color/darkblue"
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtFacility"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Price"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:textColor="@color/darkblue"
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtPrice"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Description:"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:textColor="@color/darkblue"
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:id="@+id/txtDesc"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Room Type Image:"
+                android:textSize="18dp"
+                android:layout_marginBottom="10dp"
+                android:textStyle="bold"
+                android:textColor="@color/darkblue"
+                />
+            <ImageView
+                android:id="@+id/previewImage"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/rounded"
+                android:contentDescription="Image Selected"
+                tools:ignore="HardcodedText"
+                android:scaleType="centerCrop"
+                android:layout_marginBottom="5dp"/>
+
+            <Button
+                android:id="@+id/selectImage"
+                android:layout_width="140dp"
+                android:layout_height="40dp"
+                android:textAlignment="textStart"
+                android:backgroundTint="@color/white"
+                android:text="Select Image"
+                android:textColor="@color/black"
+                app:cornerRadius="10dp"
+                app:strokeColor="@color/black"
+                app:strokeWidth="1dp"
+                android:layout_marginBottom="5dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="end">
+
+                <Button
+                    android:id="@+id/addButton"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/darkblue"
+                    android:text="Save"
+                    android:textSize="30dp"
+                    app:cornerRadius="10dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

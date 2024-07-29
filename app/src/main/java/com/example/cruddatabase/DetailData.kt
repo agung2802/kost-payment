@@ -16,12 +16,15 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class DetailData : AppCompatActivity() {
 
-    lateinit var newsTitle: TextView
-    lateinit var newsSubTitle: TextView
-    lateinit var newsImage: ImageView
+    lateinit var kostName: TextView
+    lateinit var kostPrice: TextView
+    lateinit var kostDesc: TextView
+    lateinit var kostFacility: TextView
+    lateinit var kostImage: ImageView
 
     lateinit var edit: Button
     lateinit var hapus: Button
+    lateinit var buttonBack: Button
     private lateinit var db: FirebaseFirestore
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,30 +36,41 @@ class DetailData : AppCompatActivity() {
             insets
         }
 
-        newsTitle = findViewById(R.id.newsTitle)
-        newsSubTitle = findViewById(R.id.newsSubtitle)
-        newsImage = findViewById(R.id.newsImage)
+        kostName = findViewById(R.id.kostTitle)
+        kostPrice = findViewById(R.id.kostPrice)
+        kostDesc = findViewById(R.id.kostDesc)
+        kostFacility = findViewById(R.id.kostFacility)
+        kostImage = findViewById(R.id.kostImage)
         edit = findViewById(R.id.editButton)
         hapus = findViewById(R.id.deleteButton)
+        buttonBack = findViewById(R.id.backButton)
         db = FirebaseFirestore.getInstance()
 
         val intent = intent
+
         val id = intent.getStringExtra("id")
-        val title = intent.getStringExtra("name")
-        val subTitle = intent.getStringExtra("color")
+        val Name = intent.getStringExtra("name")
+        val Price = intent.getStringExtra("price")
+        val Desc = intent.getStringExtra("desc")
+        val Facility = intent.getStringExtra("facility")
         val imageUrl = intent.getStringExtra("imageUrl")
 
         Log.w("detail image", imageUrl?:"")
 
-        newsTitle.text = title
-        newsSubTitle.text = subTitle
-        Glide.with(this).load(imageUrl).into(newsImage)
+
+        kostName.text = Name
+        kostPrice.text = "Rp." + Price + ",00"
+        kostDesc.text = Desc
+        kostFacility.text = Facility
+        Glide.with(this).load(imageUrl).into(kostImage)
 
         edit.setOnClickListener {
             val editIntent = Intent(this, AddData::class.java).apply {
                 putExtra("id", id)
-                putExtra("name", title)
-                putExtra("color", subTitle)
+                putExtra("name", Name)
+                putExtra("price", Price)
+                putExtra("desc", Desc)
+                putExtra("facility", Facility)
                 putExtra("imageUrl", imageUrl)
             }
             startActivity(editIntent)
@@ -64,10 +78,10 @@ class DetailData : AppCompatActivity() {
 
         hapus.setOnClickListener {
             id?.let { documentId ->
-                db.collection("fruit").document(documentId)
+                db.collection("kost").document(documentId)
                     .delete()
                     .addOnSuccessListener {
-                        Toast.makeText(this, "Fruit deleted successfully", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Kost deleted successfully", Toast.LENGTH_SHORT).show()
                         val mainIntent = Intent(this, MainActivity::class.java).apply {
                             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                         }
@@ -77,12 +91,17 @@ class DetailData : AppCompatActivity() {
                     .addOnFailureListener { e ->
                         Toast.makeText(
                             this,
-                            "Error deleting fruit: " + e.message,
+                            "Error deleting kost: " + e.message,
                             Toast.LENGTH_SHORT
                         ).show()
-                        Log.w("FruitDetails", "Error deleting document", e)
+                        Log.w("KostDetails", "Error deleting document", e)
                     }
             }
         }
+
+        buttonBack.setOnClickListener({
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        })
     }
 }
